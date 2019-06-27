@@ -1,0 +1,25 @@
+{
+  "name": "os-firebase-project-creator",
+  "version": "1.0.2",
+  "description": "this is a self contained module for creating an ios/android app in Firebase, and downloading the json file",
+  "main": "index.js",
+  "dependencies": {
+    "os-tools": "1.0.2",
+    "os-puppeteer-helper": "1.0.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "osfunapps"
+  },
+  "keywords": [
+    "npm",
+    "node",
+    "Firebase",
+    "project",
+    "automation",
+    "js",
+    "puppeteer"
+  ],
+  "author": "osfunapps",
+  "license": "ISC"
+}
