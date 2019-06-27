@@ -47,4 +47,5 @@ This is an automated module which uses [os-puppeteer-helper](https://github.com/
 [npm os-puppeteer-helper](https://github.com/osfunapps/os-puppeteer-helper-npm)
 
 ## Licence
-ISC# os-firebase-project-creator-npm
+ISC
+#os-firebase-project-creator-npm
