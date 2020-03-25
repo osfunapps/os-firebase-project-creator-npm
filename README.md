@@ -32,13 +32,17 @@ Register an app:
      * @param packageOrBundleName -> package/bundle name. For example: com.mlstudios.coolApp
      * @param appNickname -> the name which be displayed in the project
      * @param jsonFilePath -> the path to save the json file
+     * @param puppeteerPage -> (optional) puppeteer page to use (if not specified, will create a new one
+     * @param killBrowserAtTheEnd -> true to kill the created browser, false to keep it alive and return the page
      * @returns {Promise<void>} -> call this function via await
      */
     registerFirebaseApp: async function (projectName,
-                                       iosOrAndroid,
-                                       packageOrBundleName,
-                                       appNickname,
-                                       jsonFilePath)
+                                         iosOrAndroid,
+                                         packageOrBundleName,
+                                         appNickname,
+                                         jsonFilePath,
+                                         puppeteerPage = null,
+                                         killBrowserAtTheEnd = true)
                                        
 ## Additional notes
 This is an automated module which uses [os-puppeteer-helper](https://github.com/osfunapps/os-puppeteer-helper-npm) to automate the app registration. 
