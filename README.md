@@ -10,40 +10,83 @@ Install via npm:
 
 
 ## Usage       
-Require pc:
-        
-    var pc = require("os-firebase-project-creator")
-
+Require:
+```js
+var pc = require("os-firebase-project-creator")
+```
      
       
-Register an app:     
-    
-    await pc.registerFirebaseApp("MyFirebaseProject", "ios", "com.osfunapps.my-cool-app", "My Cool App", "/Users/home/Desktop")
-
-
-
-## Function signature
-
-    
+# Register an Android app:     
+```js    
     /**
-     * will create a new app in a given Firbase project
-     * @param projectName -> your project name
-     * @param iosOrAndroid -> choose either 'ios' or 'android'
-     * @param packageOrBundleName -> package/bundle name. For example: com.mlstudios.coolApp
-     * @param appNickname -> the name which be displayed in the project
-     * @param jsonFilePath -> the path to save the json file
-     * @param puppeteerPage -> (optional) puppeteer page to use (if not specified, will create a new one
-     * @param killBrowserAtTheEnd -> true to kill the created browser, false to keep it alive and return the page
-     * @returns {Promise<void>} -> call this function via await
+     * Will register a new Android app to a given Firbase project
+     *
+     * @param projectName your project name
+     * @param packageName your app's package name
+     * @param appNickname the name which be displayed in the project
+     * @param jsonFilePath the path to save the json file
+     * @param puppeteerPage (optional) puppeteer page to use (if not specified, will create a new one)
+     * @param fireFoxNightlyPath the path to your FireFox Nightly runner file
+     * In Windows that's usually your firefox.exe file (like 'C:/Program Files/Firefox Nightly/firefox.exe').
+     * In Mac that's usually your firefox file, located in your Firefox Nightly.app, inside the Applications dir
+     * @param killBrowserAtTheEnd true to kill the created browser, false to keep it alive and return the page
+     * @returns {Promise<void>} call this function via await
      */
-    registerFirebaseApp: async function (projectName,
-                                         iosOrAndroid,
-                                         packageOrBundleName,
-                                         appNickname,
-                                         jsonFilePath,
-                                         puppeteerPage = null,
-                                         killBrowserAtTheEnd = true)
-                                       
+    registerAndroidApp: async function (projectName,
+                                        packageName,
+                                        appNickname,
+                                        jsonFilePath = null,
+                                        puppeteerPage = null,
+                                        fireFoxNightlyPath = '/Applications/Firefox Nightly.app/Contents/MacOS/firefox',
+                                        killBrowserAtTheEnd = true) {
+        return await _registerApp(projectName,
+            packageName,
+            appNickname,
+            jsonFilePath,
+            puppeteerPage,
+            fireFoxNightlyPath,
+            killBrowserAtTheEnd,
+            ANDROID)
+    },
+
+    
+```
+
+# Register an iOS app:
+```js  
+    /**
+     * Will register a new iOS app to a given Firbase project
+     *
+     * @param projectName your project name
+     * @param bundleIdentifier your app's bundle identifier
+     * @param appNickname the name which be displayed in the project
+     * @param plistFilePath the path to save the plist file
+     * @param puppeteerPage (optional) puppeteer page to use (if not specified, will create a new one)
+     * @param fireFoxNightlyPath the path to your FireFox Nightly runner file
+     * In Windows that's usually your firefox.exe file (like 'C:/Program Files/Firefox Nightly/firefox.exe').
+     * In Mac that's usually your firefox file, located in your Firefox Nightly.app, inside the Applications dir
+     * @param killBrowserAtTheEnd true to kill the created browser, false to keep it alive and return the page
+     * @returns {Promise<void>} call this function via await
+     */
+    registerIOSApp: async function (projectName,
+                                    bundleIdentifier,
+                                    appNickname,
+                                    plistFilePath = null,
+                                    puppeteerPage = null,
+                                    fireFoxNightlyPath = '/Applications/Firefox Nightly.app/Contents/MacOS/firefox',
+                                    killBrowserAtTheEnd = true) {
+        return await _registerApp(projectName,
+            bundleIdentifier,
+            appNickname,
+            outputFilePath,
+            puppeteerPage,
+            fireFoxNightlyPath,
+            killBrowserAtTheEnd,
+            IOS)
+    }
+```
+
+
 ## Additional notes
 This is an automated module which uses [os-puppeteer-helper](https://github.com/osfunapps/os-puppeteer-helper-npm) to automate the app registration. 
 
